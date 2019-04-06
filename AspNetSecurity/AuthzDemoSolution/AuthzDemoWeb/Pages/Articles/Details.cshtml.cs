@@ -37,9 +37,11 @@ namespace AuthzDemoWeb.Pages.Articles
                 return NotFound();
             }
 
-            Article = await _context.Articles.FirstOrDefaultAsync(m => m.Id == id);
+            Article = await _context.Articles.FirstOrDefaultAsync(
+                m => m.Id == id);
 
-            var authResult = await _auth.AuthorizeAsync(User, Article, ArticlePolicies.ReadArticles);
+            var authResult = await _auth.AuthorizeAsync(
+                User, Article, ArticlePolicies.ReadArticles);
             if (!authResult.Succeeded)
             {
                 ArticlesHelper.LogFailure(_logger, Article, authResult.Failure);

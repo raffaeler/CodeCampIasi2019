@@ -34,7 +34,7 @@ namespace AuthzDemoWeb.Pages.Articles
 
         public bool IsAuthorized { get; set; }
 
-        public async Task OnGet2Async()
+        public async Task OnGet1Async()
         {
             //var authResult = await _auth.AuthorizeAsync(User, new Article(), ArticlePolicies.ListArticles);
             //if (!authResult.Succeeded)

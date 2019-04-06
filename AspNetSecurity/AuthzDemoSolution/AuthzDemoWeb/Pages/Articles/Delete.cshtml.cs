@@ -38,14 +38,16 @@ namespace AuthzDemoWeb.Pages.Articles
                 return NotFound();
             }
 
-            Article = await _context.Articles.FirstOrDefaultAsync(m => m.Id == id);
+            Article = await _context.Articles.FirstOrDefaultAsync(
+                m => m.Id == id);
 
             if (Article == null)
             {
                 return NotFound();
             }
 
-            var authResult = await _auth.AuthorizeAsync(User, Article, ArticlePolicies.ReadArticles);
+            var authResult = await _auth.AuthorizeAsync(
+                User, Article, ArticlePolicies.ReadArticles);
             if (!authResult.Succeeded)
             {
                 ArticlesHelper.LogFailure(_logger, Article, authResult.Failure);
@@ -64,7 +66,8 @@ namespace AuthzDemoWeb.Pages.Articles
 
             Article = await _context.Articles.FindAsync(id);
 
-            var authResult = await _auth.AuthorizeAsync(User, Article, ArticlePolicies.DeleteArticles);
+            var authResult = await _auth.AuthorizeAsync(
+                User, Article, ArticlePolicies.DeleteArticles);
             if (!authResult.Succeeded)
             {
                 ArticlesHelper.LogFailure(_logger, Article, authResult.Failure);

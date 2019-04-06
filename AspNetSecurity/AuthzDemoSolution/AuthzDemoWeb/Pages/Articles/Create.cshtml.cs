@@ -43,7 +43,8 @@ namespace AuthzDemoWeb.Pages.Articles
                 return Page();
             }
 
-            var authResult = await _auth.AuthorizeAsync(User, Article, ArticlePolicies.CreateArticles);
+            var authResult = await _auth.AuthorizeAsync(
+                User, Article, ArticlePolicies.CreateArticles);
             if (!authResult.Succeeded)
             {
                 ArticlesHelper.LogFailure(_logger, Article, authResult.Failure);
