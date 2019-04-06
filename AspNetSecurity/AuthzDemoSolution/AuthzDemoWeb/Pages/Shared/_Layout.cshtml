@@ -46,26 +46,31 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2016 - WebApp01</p>
             <div class="row">
-                <div class="form-group">
-                    <div class="col-md-5">IsAuthenticated</div>
-                    <div class="col-md-7">@User.Identity.IsAuthenticated</div>
-                </div>
+                @{
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="col-md-12 text-left">User <i>@User.Identity.Name</i> has been authenticated</div>
+                    }
+                    else
+                    {
+                        <div class="col-md-12 text-left">User is not authenticated</div>
+                    }
+                }
 
+            </div>
+            <div class="row1">
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <div class="form-group">
-                        <div class="col-md-5">Name</div>
-                        <div class="col-md-7">@User.Identity.Name</div>
-                    </div>
+                    <div class="col-md-7 claimtype">Name</div>
+                    <div class="col-md-5">@User.Identity.Name</div>
+                    <p></p>
 
                     @foreach (var claim in @User.Claims)
                     {
-                        <div class="form-group">
-                            <div class="col-md-5">@claim.Type</div>
-                            <div class="col-md-7">@claim.Value &nbsp;</div>
-                        </div>
+                        <div class="col-md-7 claimtype">@claim.Type</div>
+                        <div class="col-md-5">@claim.Value &nbsp;</div>
+                        <p></p>
                     }
                 }
             </div>

@@ -35,3 +35,42 @@ body {
         display: none;
     }
 }
+
+
+/* raf */
+
+.claimtype {
+    color: darkred;
+}
+
+
+/* For small screen */
+.row1 :nth-child(even) {
+    background-color: #efefef;
+}
+
+.row1 :nth-child(odd) {
+    background-color: #e0e0e0;
+}
+
+/* For medium screen */
+@media (min-width: 768px) {
+    .row1 :nth-child(4n), .row1 :nth-child(4n-1) {
+        background: #efefef;
+    }
+
+    .row1 :nth-child(4n-2), .row1 :nth-child(4n-3) {
+        background: #e0e0e0;
+    }
+}
+
+/* For large screen */
+@media (min-width: 992px) {
+    .row1 :nth-child(6n), .row1 :nth-child(6n-1), .row1 :nth-child(6n-2) {
+        background: #efefef;
+    }
+
+    .row1 :nth-child(6n-3), .row1 :nth-child(6n-4), .row1 :nth-child(6n-5) {
+        background: #e0e0e0;
+    }
+}
